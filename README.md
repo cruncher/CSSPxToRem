@@ -1,5 +1,5 @@
-CSSPxToRem
-==========
+CSS Px To Rem
+=============
 
 A sublime text plugin that converts pixels CSS units to rem and back.
 
