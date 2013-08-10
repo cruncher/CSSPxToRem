@@ -3,3 +3,9 @@ body {
     margin: 10px solid red;
     color: 22px;
 }
+
+
+a:after: {
+    /* this is not replaced */
+    content:"23pxasd";
+}

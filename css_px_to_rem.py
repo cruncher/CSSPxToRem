@@ -19,5 +19,10 @@ class PxToRemCommand(sublime_plugin.TextCommand):
 
     def transform(self, str):
         def repl(m):
-            return '%3.4frem' % (int(m.group(2)) / float(self.rem_height))
-        return re.sub(r'((\d+)\s*px)', repl, str)
+            gd = m.groupdict()
+            if gd.get('unit', None) == 'px':
+                return '%3.4frem%s' % (int(gd.get('qty')) / float(self.rem_height), gd.get('foll'))
+            if gd.get('unit', None) == 'rem':
+                return '%dpx%s' % (int(float(gd.get('qty')) * float(self.rem_height)), gd.get('foll'))
+
+        return re.sub(r'((?P<qty>[\d\.]+)\s*(?P<unit>px|rem)(?P<foll>[\s;]))', repl, str)
