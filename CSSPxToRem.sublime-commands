@@ -1,5 +1,5 @@
 [
 
-    { "caption": "CSS: px to rem", "command": "px_to_rem" }
+    { "caption": "CSS: toggle px and rem values", "command": "px_to_rem" }
 
 ]
