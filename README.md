@@ -12,7 +12,7 @@ Installation
 Usage
 -----
 
- * Select a bit of CSS
+ * Select a block of CSS
  * Hit ``Cmd-alt-R`` to toggle all selected CSS values between pixels and rems.
 
 
