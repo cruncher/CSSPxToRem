@@ -1,7 +1,7 @@
 CSSPxToRem
 ==========
 
-A sublime text plugin that converts pixels CSS units to rem.
+A sublime text plugin that converts pixels CSS units to rem and back.
 
 Installation
 ------------
@@ -13,7 +13,8 @@ Usage
 -----
 
  * Select a bit of CSS
- * Hit ``Cmd-shift-P`` and select "CSS: px to rem"
+ * Hit ``Cmd-alt-R`` to toggle all selected CSS values between pixels and rems.
+
 
 
 
