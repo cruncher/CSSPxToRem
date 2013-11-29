@@ -3,6 +3,7 @@ import sublime
 import sublime_plugin
 import re
 
+
 class PxToRemCommand(sublime_plugin.TextCommand):
 
     def __init__(self, *args, **kwargs):
@@ -17,12 +18,12 @@ class PxToRemCommand(sublime_plugin.TextCommand):
             txt = self.transform(self.view.substr(s))
             self.view.replace(edit, s, txt)
 
-    def transform(self, str):
+    def transform(self, str_):
         def repl(m):
             gd = m.groupdict()
             if gd.get('unit', None) == 'px':
                 return '%3.4frem' % (int(float(gd.get('qty'))) / float(self.rem_height))
             if gd.get('unit', None) == 'rem':
-                return  unicode(int(float(gd.get('qty')) * float(self.rem_height))) + u'px'
+                return str(int(float(gd.get('qty')) * float(self.rem_height))) + u'px'
 
-        return re.sub(r'((?P<qty>[0-9\.]+)(?P<unit>px|rem))', repl, str)
+        return re.sub(r'((?P<qty>[0-9\.]+)(?P<unit>px|rem))', repl, str_)
