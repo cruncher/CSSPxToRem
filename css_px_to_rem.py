@@ -1,4 +1,3 @@
-import string
 import sublime
 import sublime_plugin
 import re
@@ -21,9 +20,24 @@ class PxToRemCommand(sublime_plugin.TextCommand):
     def transform(self, str_):
         def repl(m):
             gd = m.groupdict()
+
+            # px -> rem
             if gd.get('unit', None) == 'px':
-                return '%3.4frem' % (int(float(gd.get('qty'))) / float(self.rem_height))
+                ret = '%3.4f' % (float(gd.get('qty')) / float(self.rem_height))
+                while ret[-1] == '0':
+                    ret = ret[:-1]
+                if ret.endswith('.'):
+                    ret = ret[:-1]
+                return ret + 'rem'
+
+            # rem -> px
             if gd.get('unit', None) == 'rem':
-                return str(int(float(gd.get('qty')) * float(self.rem_height))) + u'px'
+                ret_val = float(gd.get('qty')) * float(self.rem_height)
+                ret = '%3.1f' % ret_val
+                if ret.endswith('.0'):
+                    ret = ('%3.0f' % ret_val) + 'px'
+                else:
+                    ret = ret + 'px'
+                return ret.strip()
 
         return re.sub(r'((?P<qty>[0-9\.]+)(?P<unit>px|rem))', repl, str_)
