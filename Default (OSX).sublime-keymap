@@ -1,3 +1,4 @@
 [
-    { "keys": ["super+alt+r"], "command": "px_to_rem" }
+    { "keys": ["super+alt+r"], "command": "px_to_rem" },
+    { "keys": ["super+ctrl+alt+r"], "command": "px_to_rem" }
 ]
